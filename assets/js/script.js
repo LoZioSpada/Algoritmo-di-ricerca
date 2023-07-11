@@ -180,22 +180,20 @@ const jobs = [
     },
   ]
 
-function getJob(){
-  let job = []
-  job = document.querySelectorAll('title');
-  for(let i=0; i<job.length; i++){  // ciclo for per stampare i risultati a partire dal title
-
+function searchJob(titleQuery, locationQuery){  // da controllare perchè non funziona correttamente
+  let result = [];
+  let count = 0;
+  for(let i = 0; i < jobs.length; i++){
+    const element = jobs[i];
+    let inputTitle = element.title
+    let inputLocation = element.location
+    if(titleQuery === inputTitle && locationQuery === inputLocation){
+      result.push(element[i]);
+      count = count + 1;
+    }
   }
-  console.log("result [ " +jobTitle + " ]");
-
-  for(let i=0; i<job.length; i++){  // ciclo for per contare il numero di risultati trovati a partire dal title
-    let jobCount = job[i].innerHTML
-  }
-  console.log("count [ " +jobCount + " ]");
 }
+console.log(searchJob("developer", "US")) 
 
 
 
-// function getLocation(){
-
-// }
