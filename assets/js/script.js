@@ -199,7 +199,7 @@ function searchJob(titleQuery, locationQuery){  //funzione che cerca il lavoro e
   }
 }
 
-console.log(searchJob("Dev", "US"))   //al momento funziona solo se si usano le maiuscole, DEVE funzionare anche se il testo è tutto minuscolo
+searchJob("Dev", "US")   //al momento funziona solo se si usano le maiuscole, DEVE funzionare anche se il testo è tutto minuscolo
 console.log("count: " + count)
 
 
