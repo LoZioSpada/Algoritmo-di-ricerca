@@ -180,20 +180,27 @@ const jobs = [
     },
   ]
 
-function searchJob(titleQuery, locationQuery){  // da controllare perchè non funziona correttamente
-  let result = [];
-  let count = 0;
-  for(let i = 0; i < jobs.length; i++){
-    const element = jobs[i];
-    let inputTitle = element.title
-    let inputLocation = element.location
-    if(titleQuery === inputTitle && locationQuery === inputLocation){
-      result.push(element[i]);
-      count = count + 1;
+let titleLower = " "
+let locationLower = " "
+let soloTitle = " "
+let soloLocation = " "
+let count = 0
+
+function searchJob(titleQuery, locationQuery){  //funzione che cerca il lavoro e la posizione in un array
+  titleLower = titleQuery.toLowerCase();
+  locationLower = locationQuery.toLowerCase();
+  for(let i=0; i<jobs.length; i++){
+     soloTitle = jobs[i].title
+     soloLocation = jobs[i].location
+    if(soloTitle.includes(titleQuery) && soloLocation.includes(locationQuery)){
+      console.log(jobs[i])
+      count = count + 1
     }
   }
 }
-console.log(searchJob("developer", "US")) 
+
+console.log(searchJob("Dev", "US"))   //al momento funziona solo se si usano le maiuscole, DEVE funzionare anche se il testo è tutto minuscolo
+console.log("count: " + count)
 
 
 
