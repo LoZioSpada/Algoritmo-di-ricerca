@@ -6,8 +6,39 @@
     <title>Find your job!!</title>
     <link rel="stylesheet" href="assets/style/style.css">
 </head>
+
+<header id="navbar">
+    <div>   <!-- Titolo della pagina -->
+        <h1>FIND YOUR JOB!!</h1>
+    </div>
+    <div class="menu">
+        <ul>
+            <li>About us</li>
+            <li>Contact</li>
+            <li>Help</li>
+        </ul>
+    </div>
+</header>
+
 <body>
+    <h2>Now it's your chance for find your dream job! Please, follow the instructions below!</h2>
+    <div> <!-- div dove viene effettuata la ricerca-->
+        <p>Write here what job do you searching for!</p>
+        <input type="text" placeholder="Search for job" id="lavoro" minlength="3" required>   <!-- required serve per far vedere che un campo non è stato compilato-->
+        <p>Write here where do you want to work!</p>
+        <input type="text" placeholder="Search for location" id="luogo" minlength="2" required>   <!-- required serve per far vedere che un campo non è stato compilato-->
+    </div>
+    <p></p>
+    <button onclick="clickButton()">Search</button>
+    <button onclick="resetButton()">Reset</button>
+    <!-- Aggiungere alert per dire che entrambi i campi devono essere compilati -->
     
+    <div id="ricerca">   <!-- div dove apparirà la ricerca -->
+        <label id="risultato">Here what we find for you:</label>
+        <ol id="output">
+
+        </ol>
+    </div>
 </body>
 
 <script src="assets/js/script.js"></script>

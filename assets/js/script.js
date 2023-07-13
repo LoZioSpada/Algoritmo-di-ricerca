@@ -180,15 +180,14 @@ const jobs = [
   },
 ]
 
-
+let count = 0
+const risultato = []
 function searchJob(titleQuery, locationQuery){  //funzione che cerca il lavoro e la posizione in un array
-  let count = 0
-  const risultato = []
   for(let i=0; i<jobs.length; i++){
     let soloTitle = jobs[i].title.toLowerCase()
     let soloLocation = jobs[i].location.toLowerCase()
     if(soloTitle.includes(titleQuery.toLowerCase()) && soloLocation.includes(locationQuery.toLowerCase())){
-     risultato.push(jobs[i])
+      risultato.push(jobs[i])
       count = count + 1   // count deve contare quanti risultati appaiono
     }
   }
@@ -199,4 +198,31 @@ const data = searchJob("app", "us")
 console.log(data)
 
 
+const inputLavoro = document.querySelector('#lavoro')
+const inputLuogo = document.querySelector('#luogo')
+const listaOutput = document.querySelector('#output')
+const idRisultato = document.querySelector('#risultato')
 
+function clickButton(){
+  listaOutput.innerHTML = "";
+  idRisultato.innerHTML = "";
+  let a = document.querySelector('#lavoro')
+  let b = document.querySelector('#luogo')
+  console.log(a.value)
+  console.log(b.value)
+  searchJob(a.value, b.value)
+  const listaLavori = document.querySelector('ol')
+  for (let i = 0; i < risultato.length; i++){
+    let lavoro = document.createElement('li')
+    lavoro.innerText = (risultato[i].title + " / " + " " + risultato[i].location)
+    listaLavori.appendChild(lavoro)
+  }
+}
+
+
+function resetButton(){
+  inputLavoro.value = ''
+  inputLuogo.value = ''
+  listaOutput.innerHTML = "";
+  idRisultato.innerHTML = "";
+}
