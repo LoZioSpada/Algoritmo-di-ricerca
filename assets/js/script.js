@@ -180,49 +180,52 @@ const jobs = [
   },
 ]
 
+
+function searchJob(titleQuery, locationQuery){  //funzione che cerca il lavoro e la posizione in un array
+let array = {}
 let count = 0
 const risultato = []
-function searchJob(titleQuery, locationQuery){  //funzione che cerca il lavoro e la posizione in un array
   for(let i=0; i<jobs.length; i++){
     let soloTitle = jobs[i].title.toLowerCase()
     let soloLocation = jobs[i].location.toLowerCase()
     if(soloTitle.includes(titleQuery.toLowerCase()) && soloLocation.includes(locationQuery.toLowerCase())){
       risultato.push(jobs[i])
-      count = count + 1   // count deve contare quanti risultati appaiono
+      count = count + 1   //count deve contare quanti risultati appaiono
     }
   }
-  let array = {risultato, count}
+  array = {risultato, count}
   return array
+
 }
-const data = searchJob("app", "us")
-console.log(data)
+console.log(searchJob("com", "us"))
 
 
-const inputLavoro = document.querySelector('#lavoro')
-const inputLuogo = document.querySelector('#luogo')
-const listaOutput = document.querySelector('#output')
-const idRisultato = document.querySelector('#risultato')
 
-function clickButton(){
-  listaOutput.innerHTML = "";
-  idRisultato.innerHTML = "";
-  let a = document.querySelector('#lavoro')
-  let b = document.querySelector('#luogo')
-  console.log(a.value)
-  console.log(b.value)
-  searchJob(a.value, b.value)
-  const listaLavori = document.querySelector('ol')
-  for (let i = 0; i < risultato.length; i++){
-    let lavoro = document.createElement('li')
-    lavoro.innerText = (risultato[i].title + " / " + " " + risultato[i].location)
-    listaLavori.appendChild(lavoro)
+
+function clickButton() {
+
+  let lavoro = document.querySelector("#lavoro").value
+  let luogo = document.querySelector("#luogo").value
+  const dati = searchJob(lavoro, luogo)
+  const risultati = document.querySelector("#results")
+
+  // ciclo per scrivere nella lista
+  for (let i = 0; i < dati.risultato.length; i++) {
+    const result = dati.risultato[i];
+
+    const li = document.createElement("li")
+
+    li.innerHTML = result.title + " " + result.location
+
+    risultati.appendChild(li) 
   }
 }
 
-
+const myInputJob = document.querySelector('#lavoro')
+const myInputLocation = document.querySelector('#luogo')
+const myResult = document.querySelector('#results')
 function resetButton(){
-  inputLavoro.value = ''
-  inputLuogo.value = ''
-  listaOutput.innerHTML = "";
-  idRisultato.innerHTML = "";
+  myInputJob.value = ''
+  myInputLocation.value = ''
+  myResult.innerHTML = ''
 }
