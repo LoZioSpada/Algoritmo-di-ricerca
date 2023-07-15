@@ -1,18 +1,35 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
-body{
+*{
     font-family: 'Roboto', sans-serif;
+}
+
+main {
+    text-align: center;
+    margin-top: 10vh;
+    background-color: blanchedalmond;
 }
 
 #navbar{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    margin-top: 1.5em;
+    padding-top: 1em;
+    background: linear-gradient(180deg, rgba(0,212,255,1) 6%, rgba(32,242,0,1) 67%);
 }
 
 .menu li{
     list-style: none;
     display: inline-block;
     padding: 0 20px;
+    cursor: pointer;
+    color: beige;
+}
+
+h1{
+    color: beige;
+}
+
+#results {
+    background-color: aquamarine;
 }
